@@ -1,8 +1,31 @@
+/*Desarrollo por:
+David Córdoba Pimienta
+Juan Felipe Velasco García
+Programación Distribuida y Paralela - 2021
+*/
+
 .card{
     align-items: center;
-    
+    background-image: url("https://media.istockphoto.com/videos/falling-dollar-banknotes-in-4k-loopable-video-id826673868"); 
+    background-repeat: no-repeat;
+    background-size: cover;   
 }
 
 .btn{
     margin-left: 10px;
+    color: #ffffff;
+    background-color: rgb(12, 32, 0);
+
+}
+
+h1{
+    color: rgb(19, 112, 0);
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 40px;
+    text-shadow:10px 10px 10px grey;
+}
+
+label, input, select, button, p{
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: rgb(12, 32, 0);
 }

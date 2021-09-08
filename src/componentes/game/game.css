@@ -1,24 +1,45 @@
+/*Desarrollo por:
+David Córdoba Pimienta
+Juan Felipe Velasco García
+Programación Distribuida y Paralela - 2021
+*/
 
 .nav-item{
-    font-family: 'Robotop', sans-serif !important;
-    font-weight: 900 !important;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: rgb(12, 32, 0);
+    text-align: center;
 }
+
 p{
-    font-family: 'Robotop', sans-serif !important;
-    font-weight: 800 !important;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: rgb(12, 32, 0);
 }
+
+#foot{
+    text-align: center;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: rgb(12, 32, 0);
+}
+
 .card{
     border-radius: 5px;
-    width: 800px;
+    width: 1120px;
     align-items: center;
     margin-left: 75px;
-    height: 500px;
+    height: 550px;
 }
+
+.bg{
+    background-image: url("https://www.seekpng.com/png/full/122-1223275_mixtape-background-graphics-png-money-mixtape-cover-backgrounds.png");
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
 .counter{
     width: 50px !important;
     height: 50px !important ;
-    background-color: cornflowerblue !important;
-    color: white !important;
+    background-color: rgb(255, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
     border-radius: 24px  !important;
     pointer-events: none;
     margin-left: 25px;
@@ -29,14 +50,90 @@ p{
 button{
     width: 90%;
     margin-right: 50px;
+    color: #ffffff;
+    background-color: rgb(19, 112, 0);;
 }
 .winning{
-    width: 155px;
-    height: 397px;
-    margin-top: -452px;
-    margin-left: 998px;
+    width: 1000px;
+    height: 40px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: rgb(12, 32, 0);;
 }
 .optionsbtn{
     margin-left: 42px;
+    border-color: black ;
 }
- 
+
+#exit{
+    margin-left: 840px;
+}
+
+.list_win li{
+    display: inline-block;
+    padding: 9px;
+}
+
+
+span{
+    font-weight: 900;
+    color: rgb(12, 32, 0);
+}
+
+label, input, select, button,li{
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: rgb(12, 32, 0);
+}
+
+a{
+    text-transform: capitalize;
+    color: rgb(12, 32, 0);
+    font-weight: 900;
+}
+
+a:hover {
+    color: #017511 !important; 
+    cursor: pointer;
+    text-shadow:10px 5px 5px grey;
+}
+
+#exit:hover{
+    font-weight: 900;
+    transition: transform 2s ease-out;
+    transform: rotate(360deg);
+}
+
+#q{
+    text-transform:uppercase;
+    color: rgb(12, 32, 0);
+    font-weight: 900;
+    text-shadow:8px 5px 5px grey;
+
+}
+
+#blost{
+    width: 90%;
+    margin-right: 22px;
+    color: #ffffff;
+    background-color: rgb(172, 0, 0);
+    text-transform: uppercase;
+}
+
+#plost{
+    color:rgb(110, 1, 1);
+    text-shadow:8px 5px 5px rgb(133, 78, 78);
+}
+
+#bwin{
+    width: 90%;
+    margin-right: 22px;
+    color: #ffffff;
+    background-color: rgb(19, 112, 0);
+    text-transform: uppercase;
+}
+
+#pwin{
+    color:rgb(0, 0, 0);
+    text-shadow:8px 5px 5px rgb(46, 105, 61);
+}

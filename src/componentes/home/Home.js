@@ -1,3 +1,9 @@
+/*Desarrollo por:
+David Córdoba Pimienta
+Juan Felipe Velasco García
+Programación Distribuida y Paralela - 2021
+*/
+
 import React, {Fragment, useState}from 'react';
 import { Component } from 'react';
 import {Link } from "react-router-dom";
@@ -12,10 +18,7 @@ const Home  = () => {
             dificultad: ''
         })
 
-       
-
         const handleInputChange = (event) =>{
-            //console.log(event.target.value)
             setDatos({
                 ...datos,
                 [event.target.name] : event.target.value
@@ -27,60 +30,65 @@ const Home  = () => {
             let user = datos.usuario
             let category = datos.categoria
             let difficult = datos.dificultad
-            /*console.log(datos.usuario);
-            console.log(datos.categoria);
-            console.log(datos.dificultad);*/
             history.push(`/Home/Game/${user}/${category}/${difficult}`);
         }
         
         let history = useHistory();
-
-        
-
        
         return (
             <Fragment>
                 <main role="main" className="flex-shrink-0 mt-5">
-                    <div className="card">
-                    <h1> ¿QUIEN QUIERE SER MILLONARIO? </h1>
+                    
+                    <div className="card bg">
+                    <h1> PLAY, LEARN AND WIN!!! </h1>
                     <form onSubmit={enviarDatos}>
                     <div class="form-group">
-                        <label>Usuario</label>
-                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Ingrese nombre"
+                    <br></br>
+                    <br></br>
+                        <label>User👤</label>
+                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="Type your name"
                         onChange={handleInputChange} required
                         />
                     </div>
                     <br></br>
                     <div class="form-group">
-                        <label for="selectCategory">Categoria</label>
-                            <select class="form-control" id="categoria"  name="categoria" onChange={handleInputChange} required>
-                                <option value="">Seleccionar Categoria</option>
-                                <option value="21">Deporte</option>
-                                <option value="27">Animales</option>
-                                <option value="25">Arte</option>
-                                <option value="20" >Mitologia</option>
-                                <option value="22" >Geografia</option>
+                        <label for="selectCategory">Category📚</label>
+                            <select class="form-control"  id="categoria" name="categoria" onChange={handleInputChange} required> 
+                                <option value="">Choose one</option>
+                                <option value="21">&#9917; Sport </option>
+                                <option value="27">&#128021; Animals </option>
+                                <option value="25">&#128396; Art </option>
+                                <option value="20">&#128511; Mitology </option>
+                                <option value="22">&#127757; Geography </option>
                             </select>  
                     </div>
                     <br></br>
                     <div class="form-group">
-                        <label for="selectCategory">Dificultad</label>
-                            <select class="form-control" id="dificultad"  name="dificultad" onChange={handleInputChange} required>
-                                <option value="">Seleccionar Dificultad</option>
-                                <option value="easy">Facil</option>
-                                <option value="medium">Normal</option>
-                                <option value="hard">Dificil</option>
+                        <label for="selectCategory">Dificulty💪</label>
+                            <select class="form-control" id="dificultad" name="dificultad" onChange={handleInputChange} required>
+                                <option value="">Choose one</option>
+                                <option value="easy">😀 Easy</option>
+                                <option value="medium">😬 Normal</option>
+                                <option value="hard">🥵 Hard</option>
                             </select>  
                     </div>
                     <br></br>
-                    <button type="submit" class="btn btn-dark" >
-                        Ingresar
+                    <button type="submit" class="btn btn-success" >
+                        ENTER
                     </button>
-
                     <br></br>
                     </form> 
+                    <br></br>
+                    <br></br>
+                    <footer>
+                        <p id="foot">Developed by: <br></br>
+                        &#128104;&#8205;&#128187;David Córdoba Pimienta <br></br>
+                        &#128104;&#8205;&#128187;Juan Felipe Velasco García <br></br>
+                        PCJIC - Programación Distribuida y Paralela - 2021-1</p>
+                    </footer>
                     </div>  
-                </main>  
+                </main>
+                <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"></link>  
             </Fragment>  
         )
       
