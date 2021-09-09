@@ -4,7 +4,7 @@ Juan Felipe Velasco García
 Programación Distribuida y Paralela - 2021
 */
 
-import {React, useState, useEffect, useRef} from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import "./game.css";
 import { Modal, Button, Form } from "react-bootstrap";
@@ -15,52 +15,59 @@ const Game = () => {
   const [ganancia, setGanancia] = useState(0);
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [num, setNum] = useState(30);
   let intervalRef = useRef();
+
   const decreaseNum = () => {
-    if(num>0){
-      setNum((prev) => prev - 1);
-      console.log(num);
-    }else{
-      console.log(num);
+    setNum((prev) => prev - 1);
+  };
+
+  useEffect(() => {
+    fetch(
+      `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficult}&type=multiple`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results);
+        setPreguntas(data.results);
+      });
+
+  }, []);
+
+  useEffect(() => {
+    console.log(num);
+    if (num === 30) {
+      intervalRef.current = setInterval(decreaseNum, 1000);
+    } else if (num === 0) {
+      //
+      window.location = "/";
+    }
+
+  }, [num])
+
+  const { user } = useParams();
+  const { category } = useParams();
+  const { difficult } = useParams();
+
+  const handleClose = () => setModal(false);
+  const cambios = () => {
+    setNum(30);
+    clearInterval(intervalRef.current);
+    setIndice(indice + 1);
+    setGanancia(ganancia + 1000);
+    if (indice == 9) {
+      setModal(true);
     }
   };
-  const [num, setNum] = useState(30);
 
-        useEffect(() => {
-            fetch(
-            `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficult}&type=multiple`
-            )
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data.results);
-                setPreguntas(data.results);
-            });
-
-            intervalRef.current = setInterval(decreaseNum, 1000);  
-
-        }, []);
-
-        const { user } = useParams();
-        const { category } = useParams();
-        const { difficult } = useParams();
-
-        const handleClose = () => setModal(false);
-        const cambios = () =>{
-        setNum(30);
-        setIndice(indice+1);
-        setGanancia(ganancia+1000);
-         if(indice == 9){
-             setModal(true);
-         }         
-        };
-
-        const handleClose2 = () => setModal2(false);
-        const pierde = () =>{
-        setModal2(true);
-        };
+  const handleClose2 = () => setModal2(false);
+  const pierde = () => {
+    setModal2(true);
+  };
 
   return (
     <div>
+      <audio src="espera.mp3" autoplay loop></audio>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="header">
           <ul class="navbar-nav mr-auto">
@@ -70,10 +77,10 @@ const Game = () => {
             <li class="nav-item">
               <a class="nav-link">LEVEL: {difficult}</a>
             </li>
-            <li  class="nav-item ">
-              <a class="nav-link">QUESTION: #{indice+1}</a>
+            <li class="nav-item ">
+              <a class="nav-link">QUESTION: #{indice + 1}</a>
             </li>
-            <li  class="nav-item ">
+            <li class="nav-item ">
               <a class="nav-link active">PROFIT: ${ganancia}</a>
             </li>
             <li id="exit" class="nav-item ">
@@ -83,25 +90,26 @@ const Game = () => {
         </div>
       </nav>
       <br></br>
-      <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"></link>  
+      <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"></link>
       <div className="card bg">
-        <button class="counter">{(num >= 0) ? num : 0}</button>
+        <br />
+        <button class="counter">{(num > 0) ? num : 0}</button>
         <br></br>
-        <p id="q">{preguntas[indice] ? preguntas[indice].question :"" }</p>
+        <p id="q">{preguntas[indice] ? preguntas[indice].question : ""}</p>
         <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-        {preguntas[indice] ? preguntas[indice].incorrect_answers[2] :"" }
+          {preguntas[indice] ? preguntas[indice].incorrect_answers[2] : ""}
         </button>
         <br></br>
         <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-        {preguntas[indice] ? preguntas[indice].incorrect_answers[0] :"" }
+          {preguntas[indice] ? preguntas[indice].incorrect_answers[0] : ""}
         </button>
         <br></br>
         <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-        {preguntas[indice] ? preguntas[indice].incorrect_answers[1] :"" }
+          {preguntas[indice] ? preguntas[indice].incorrect_answers[1] : ""}
         </button>
         <br></br>
         <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={cambios}>
-        {preguntas[indice] ? preguntas[indice].correct_answer :""}
+          {preguntas[indice] ? preguntas[indice].correct_answer : ""}
         </button>
         <div className="card winning">
           <ol className="list_win">
@@ -119,27 +127,26 @@ const Game = () => {
         </div>
       </div>
       <Modal show={modal} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title> <p id= "pwin">YOU HAVE WON! &#x1f911;</p></Modal.Title>
-          </Modal.Header>
-          <Modal.Footer>
-            <Button id="bwin" onClick={(() => window.location="/")}>
+        <Modal.Header closeButton>
+          <Modal.Title> <p id="pwin">YOU HAVE WON! &#x1f911;</p></Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button id="bwin" onClick={(() => window.location = "/")}>
             OK
-            </Button>
-          </Modal.Footer>
-        </Modal>
-        <Modal show={modal2} onHide={handleClose2}>
-          <Modal.Header closeButton>
-            <Modal.Title> <p id= "plost">YOU HAVE LOST! 🤨</p></Modal.Title>
-          </Modal.Header>
-          <Modal.Footer>
-            <Button id="blost" onClick={(() => window.location="")}>
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={modal2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title> <p id="plost">YOU HAVE LOST! 🤨</p></Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button id="blost" onClick={(() => window.location = "/")}>
             OK
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-    
   );
 };
 
