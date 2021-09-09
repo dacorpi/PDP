@@ -6,19 +6,19 @@ Programación Distribuida y Paralela - 2021
 
 import { React, useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
-import "./game.css";
+import "./GameStyles.css";
 import { Modal, Button, Form } from "react-bootstrap";
 
 const Game = () => {
-  const [preguntas, setPreguntas] = useState([]);
-  const [indice, setIndice] = useState(0);
-  const [ganancia, setGanancia] = useState(0);
+  const [questions, setQuestions] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [profit, setProfit] = useState(0);
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [num, setNum] = useState(30);
   let intervalRef = useRef();
 
-  const decreaseNum = () => {
+  const decreaseNum = () => { 
     setNum((prev) => prev - 1);
   };
 
@@ -29,7 +29,7 @@ const Game = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.results);
-        setPreguntas(data.results);
+        setQuestions(data.results);
       });
 
   }, []);
@@ -50,24 +50,23 @@ const Game = () => {
   const { difficult } = useParams();
 
   const handleClose = () => setModal(false);
-  const cambios = () => {
+  const win = () => {
     setNum(30);
     clearInterval(intervalRef.current);
-    setIndice(indice + 1);
-    setGanancia(ganancia + 1000);
-    if (indice == 9) {
+    setIndex(index + 1);
+    setProfit(profit + 1000);
+    if (index == 9) {
       setModal(true);
     }
   };
 
   const handleClose2 = () => setModal2(false);
-  const pierde = () => {
+  const lost = () => {
     setModal2(true);
   };
 
   return (
     <div>
-      <audio src="espera.mp3" autoplay loop></audio>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="header">
           <ul class="navbar-nav mr-auto">
@@ -78,10 +77,10 @@ const Game = () => {
               <a class="nav-link">LEVEL: {difficult}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link">QUESTION: #{indice + 1}</a>
+              <a class="nav-link">QUESTION: #{index + 1}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link active">PROFIT: ${ganancia}</a>
+              <a class="nav-link active">PROFIT: ${profit}</a>
             </li>
             <li id="exit" class="nav-item ">
               <a class="nav-link" href="http://localhost:3000/">LOG OUT</a>
@@ -93,23 +92,23 @@ const Game = () => {
       <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"></link>
       <div className="card bg">
         <br />
-        <button class="counter">{(num > 0) ? num : 0}</button>
+        <button class="counter">{(num > 0) ? num : 0}</button> 
         <br></br>
-        <p id="q">{preguntas[indice] ? preguntas[indice].question : ""}</p>
-        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-          {preguntas[indice] ? preguntas[indice].incorrect_answers[2] : ""}
+        <p id="q">{questions[index] ? questions[index].question : ""}</p> 
+        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={lost}>
+          {questions[index] ? questions[index].incorrect_answers[2] : ""} 
         </button>
         <br></br>
-        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-          {preguntas[indice] ? preguntas[indice].incorrect_answers[0] : ""}
+        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={lost}>
+          {questions[index] ? questions[index].incorrect_answers[0] : ""} 
         </button>
         <br></br>
-        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={pierde}>
-          {preguntas[indice] ? preguntas[indice].incorrect_answers[1] : ""}
+        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={lost}> 
+          {questions[index] ? questions[index].incorrect_answers[1] : ""} 
         </button>
         <br></br>
-        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={cambios}>
-          {preguntas[indice] ? preguntas[indice].correct_answer : ""}
+        <button class="btn btn-success btn-lg btn-block optionsbtn" onClick={win}> 
+          {questions[index] ? questions[index].correct_answer : ""} 
         </button>
         <div className="card winning">
           <ol className="list_win">
@@ -126,6 +125,7 @@ const Game = () => {
           </ol>
         </div>
       </div>
+      //Creación del modal para mostrar un mensaje de finalización del juego (GANAR)
       <Modal show={modal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title> <p id="pwin">YOU HAVE WON! &#x1f911;</p></Modal.Title>
@@ -136,9 +136,10 @@ const Game = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      //Creación del modal para mostrar un mensaje de finalización del juego (PERDER)
       <Modal show={modal2} onHide={handleClose2}>
         <Modal.Header closeButton>
-          <Modal.Title> <p id="plost">YOU HAVE LOST! 🤨</p></Modal.Title>
+          <Modal.Title> <p id="plost">GAME OVER! 🤨</p></Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button id="blost" onClick={(() => window.location = "/")}>

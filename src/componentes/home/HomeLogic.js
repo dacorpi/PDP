@@ -7,7 +7,7 @@ Programación Distribuida y Paralela - 2021
 import React, { Fragment, useState } from 'react';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
-import './Home.css';
+import './HomeStyles.css';
 import { useHistory } from "react-router-dom";
 
 const Home = () => {
@@ -37,7 +37,6 @@ const Home = () => {
 
     return (
         <Fragment>
-
             <main role="main" className="flex-shrink-0 mt-5">
                 <audio src="audios/inicio.mp3" autoplay loop></audio>
                 <div className="card bg">
@@ -85,14 +84,13 @@ const Home = () => {
                         <p id="foot">Developed by: <br></br>
                             &#128104;&#8205;&#128187;David Córdoba Pimienta <br></br>
                             &#128104;&#8205;&#128187;Juan Felipe Velasco García <br></br>
-                            PCJIC - Programación Distribuida y Paralela - 2021-1</p>
+                            PCJIC - Programación Distribuida y Paralela - 2021</p>
                     </footer>
                 </div>
             </main>
             <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"></link>
         </Fragment>
     )
-
 };
 
 export default Home;

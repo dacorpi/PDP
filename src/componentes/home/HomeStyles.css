@@ -28,4 +28,5 @@ h1{
 label, input, select, button, p{
     font-family: 'ZCOOL KuaiLe', cursive;
     color: rgb(12, 32, 0);
+    font-weight: bold;
 }

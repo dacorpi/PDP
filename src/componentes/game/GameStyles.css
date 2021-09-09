@@ -19,6 +19,7 @@ p{
     text-align: center;
     font-family: 'ZCOOL KuaiLe', cursive;
     color: rgb(12, 32, 0);
+    font-weight: bold;
 }
 
 .card{
@@ -109,7 +110,7 @@ a:hover {
     color: rgb(12, 32, 0);
     font-weight: 900;
     text-shadow:8px 5px 5px grey;
-
+    font-weight: bold;
 }
 
 #blost{
