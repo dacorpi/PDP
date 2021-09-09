@@ -56,11 +56,11 @@ const Home = () => {
                             <label for="selectCategory">Category📚</label>
                             <select class="form-control" id="categoria" name="categoria" onChange={handleInputChange} required>
                                 <option value="">Choose one</option>
-                                <option value="21">&#9917; Sport </option>
-                                <option value="27">&#128021; Animals </option>
-                                <option value="25">&#128396; Art </option>
-                                <option value="20">&#128511; Mitology </option>
-                                <option value="22">&#127757; Geography </option>
+                                <option value="15">&#127918; Video Games </option>
+                                <option value="18">&#128187; Computers </option>
+                                <option value="9">&#128161; General Knowledge</option>
+                                <option value="32">&#128126; Cartoon and Animations </option>
+                                <option value="12">&#127926; Music</option>
                             </select>
                         </div>
                         <br></br>
