@@ -26,7 +26,7 @@ const Game = () => {
     fetch(
       `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficult}&type=multiple`
     )
-      .then((res) => res.json())
+      .then((res) => res.json())  //recorrido de respuestas
       .then((data) => {
         console.log(data.results);
         setQuestions(data.results);
@@ -39,13 +39,11 @@ const Game = () => {
     if (num === 30) {
       intervalRef.current = setInterval(decreaseNum, 1000);
     } else if (num === 0) {
-      //
-      window.location = "/";
+      setModal2(true);
     }
-
   }, [num])
 
-  const { user } = useParams();
+  const { user } = useParams();     //captura de datos
   const { category } = useParams();
   const { difficult } = useParams();
 
@@ -125,7 +123,6 @@ const Game = () => {
           </ol>
         </div>
       </div>
-      //Creación del modal para mostrar un mensaje de finalización del juego (GANAR)
       <Modal show={modal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title> <p id="pwin">YOU HAVE WON! &#x1f911;</p></Modal.Title>
@@ -136,7 +133,6 @@ const Game = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      //Creación del modal para mostrar un mensaje de finalización del juego (PERDER)
       <Modal show={modal2} onHide={handleClose2}>
         <Modal.Header closeButton>
           <Modal.Title> <p id="plost">GAME OVER! 🤨</p></Modal.Title>

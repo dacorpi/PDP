@@ -22,9 +22,11 @@ const Home = () => {
         setDatos({
             ...datos,
             [event.target.name]: event.target.value
-
         })
     }
+
+    let history = useHistory();
+    
     const enviarDatos = (event) => {
         event.preventDefault();
         let user = datos.usuario
@@ -32,8 +34,6 @@ const Home = () => {
         let difficult = datos.dificultad
         history.push(`/Home/Game/${user}/${category}/${difficult}`);
     }
-
-    let history = useHistory();
 
     return (
         <Fragment>
