@@ -5,8 +5,6 @@ Programación Distribuida y Paralela - 2021
 */
 
 import React, { Fragment, useState } from 'react';
-import { Component } from 'react';
-import { Link } from "react-router-dom";
 import './HomeStyles.css';
 import { useHistory } from "react-router-dom";
 
@@ -38,7 +36,6 @@ const Home = () => {
     return (
         <Fragment>
             <main role="main" className="flex-shrink-0 mt-5">
-                <audio src="audios/inicio.mp3" autoplay loop></audio>
                 <div className="card bg">
                     <h1> PLAY, LEARN AND WIN!!! </h1>
                     <form onSubmit={enviarDatos}>
