@@ -81,7 +81,7 @@ const Game = () => {
               <a class="nav-link active">PROFIT: ${profit}</a>
             </li>
             <li id="exit" class="nav-item ">
-              <a class="nav-link" href="http://localhost:3000/">LOG OUT</a>
+              <a class="nav-link" href="/">LOG OUT</a>
             </li>
           </ul>
         </div>
