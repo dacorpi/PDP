@@ -22,7 +22,7 @@ p{
     font-weight: bold;
 }
 
-.card,#q{
+.card{
     border-radius: 5px;
     width: 1120px;
     align-items: center;
@@ -55,7 +55,7 @@ button{
     color: #ffffff;
     background-color: rgb(19, 112, 0);
 }
-.winning,#q{
+.winning{
     width: 1000px;
     height: 40px;
     margin-top: 35px;
