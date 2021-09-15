@@ -4,11 +4,11 @@ Juan Felipe Velasco García
 Programación Distribuida y Paralela - 2021
 */
 
-import React, { Fragment, useState } from 'react';
-import './HomeStyles.css';
-import { useHistory } from "react-router-dom";
+import React, { Fragment, useState } from 'react'; {/*Para permitir agregar una lista de elementos hijos y no agregar nodos adicionales en el DOM. */}
+import './HomeStyles.css'; {/*Se incluyen los estilos del home*/}
+import { useHistory } from "react-router-dom"; {/*Da acceso a la instancia del historial que puede usar para navegar.*/}
 
-const Home = () => {
+const Home = () => { //Se utiliza useState que crea internamente la variable donde almacenar el estado del componente
 
     const [datos, setDatos] = useState({
         usuario: '',
@@ -34,11 +34,11 @@ const Home = () => {
     }
 
     return (
-        <Fragment>
+        <Fragment> {/*Permite agregar una lista de elementos hijos y no agregar nodos adicionales en el DOM. */}
             <main role="main" className="flex-shrink-0 mt-5">
                 <div className="card bg">
                     <h1> PLAY, LEARN AND WIN!!! </h1>
-                    <form onSubmit={enviarDatos}>
+                    <form onSubmit={enviarDatos}>{/*Creación del formulario de inicio de sesión */}
                         <div class="form-group">
                             <br></br>
                             <br></br>
@@ -77,7 +77,7 @@ const Home = () => {
                     </form>
                     <br></br>
                     <br></br>
-                    <footer>
+                    <footer>{/*Creación del footer */}
                         <p id="foot">Developed by: <br></br>
                             &#128104;&#8205;&#128187;David Córdoba Pimienta <br></br>
                             &#128104;&#8205;&#128187;Juan Felipe Velasco García <br></br>
