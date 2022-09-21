@@ -9,18 +9,6 @@ import Game from './componentes/game/GameLogic';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-ReactDOM.render( //ruteo
-  <BrowserRouter> 
-    <Switch>
-      <Route  path="/Home/:Game/:user/:category/:difficult">
-        <Game/>
-      </Route>
-        
-      <Route exact path="/" component={Home}/> {/* principal */}
-    </Switch>
-  </BrowserRouter>,
-   document.getElementById('root')
-);
 
 
 reportWebVitals();
